@@ -73,5 +73,6 @@ public class LottieTest {
     TestRobot.testLinearAnimation(activity, "Tests/TrimPaths.json");
     TestRobot.testChangingCompositions(activity, "TwitterHeart.json", "PinJump.json");
     TestRobot.testSettingSameComposition(activity, "PinJump.json");
+    TestRobot.testAddColorFilterInXml(activity);
   }
 }

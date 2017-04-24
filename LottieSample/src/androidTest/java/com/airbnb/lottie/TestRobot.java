@@ -1,12 +1,16 @@
 package com.airbnb.lottie;
 
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.airbnb.lottie.samples.MainActivity;
 import com.facebook.testing.screenshot.Screenshot;
 import com.facebook.testing.screenshot.ViewHelpers;
 
 import java.util.concurrent.Semaphore;
+
+
 
 class TestRobot {
 
@@ -57,6 +61,13 @@ class TestRobot {
     recordScreenshots(view, "same_composition_second_run_" + fileName);
 
     cleanUpView(view, activity);
+  }
+
+  static void testAddColorFilterInXml(MainActivity activity) {
+    View view = LayoutInflater.from(activity).inflate(com.airbnb.lottie.test.R.layout.test_add_color_filter, null,
+        false);
+
+    // TODO screenshot the inflated view
   }
 
   private static void loadCompositionOnView(AnimationLinearLayout view, String imageAssetsFolder,
