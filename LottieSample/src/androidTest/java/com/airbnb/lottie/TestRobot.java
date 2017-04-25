@@ -1,6 +1,7 @@
 package com.airbnb.lottie;
 
 import android.support.annotation.Nullable;
+import android.support.test.InstrumentationRegistry;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -10,6 +11,9 @@ import com.facebook.testing.screenshot.ViewHelpers;
 
 import java.util.concurrent.Semaphore;
 
+import static com.airbnb.lottie.test.R.id.animation_view;
+import static com.airbnb.lottie.test.R.layout.test_add_color_filter;
+import static junit.framework.Assert.assertNotNull;
 
 
 class TestRobot {
@@ -64,10 +68,15 @@ class TestRobot {
   }
 
   static void testAddColorFilterInXml(MainActivity activity) {
-    View view = LayoutInflater.from(activity).inflate(com.airbnb.lottie.test.R.layout.test_add_color_filter, null,
-        false);
+    InstrumentationRegistry.getInstrumentation().runOnMainSync(new Runnable() { 
 
-    // TODO screenshot the inflated view
+      @Override public void run() {
+        int filter = test_add_color_filter;
+        View inflate = LayoutInflater.from(InstrumentationRegistry.getContext()) ;
+        View viewById = inflate.findViewById(animation_view); 
+        assertNotNull(viewById);
+      } 
+    });
   }
 
   private static void loadCompositionOnView(AnimationLinearLayout view, String imageAssetsFolder,

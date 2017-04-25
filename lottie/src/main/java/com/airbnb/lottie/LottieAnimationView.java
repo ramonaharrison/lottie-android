@@ -237,13 +237,13 @@ public class LottieAnimationView extends AppCompatImageView {
     // AppCompatImageView constructor will set the image when set from xml
     // before LottieDrawable has been initialized
     if (lottieDrawable != null) {
-        lottieDrawable.recycleBitmaps();
+      lottieDrawable.recycleBitmaps();
     }
   }
 
   /**
    * Enable this to get merge path support for devices running KitKat (19) and above.
-   *
+   * <p>
    * Merge paths currently don't work if the the operand shape is entirely contained within the
    * first shape. If you need to cut out one shape from another shape, use an even-odd fill type
    * instead of using merge paths.
@@ -257,13 +257,13 @@ public class LottieAnimationView extends AppCompatImageView {
    * Enable hardware acceleration for this view.
    * READ THIS BEFORE ENABLING HARDWARE ACCELERATION:
    * 1) Test your animation on the minimum API level you support. Some drawing features such as
-   *    dashes and stroke caps have min api levels
-   *    (https://developer.android.com/guide/topics/graphics/hardware-accel.html#unsupported)
+   * dashes and stroke caps have min api levels
+   * (https://developer.android.com/guide/topics/graphics/hardware-accel.html#unsupported)
    * 2) Enabling hardware acceleration is not always more performant. Check it with your specific
-   *    animation only if you are having performance issues with software rendering.
+   * animation only if you are having performance issues with software rendering.
    * 3) Software rendering is safer and will be consistent across devices. Manufacturers can
-   *    potentially break hardware rendering with bugs in their SKIA engine. Lottie cannot do
-   *    anything about that.
+   * potentially break hardware rendering with bugs in their SKIA engine. Lottie cannot do
+   * anything about that.
    */
   @SuppressWarnings({"WeakerAccess", "unused"}) public void useExperimentalHardwareAcceleration() {
     setLayerType(LAYER_TYPE_HARDWARE, null);
@@ -287,7 +287,8 @@ public class LottieAnimationView extends AppCompatImageView {
    * strong reference to the composition once it is loaded
    * and deserialized. {@link CacheStrategy#Weak} will hold a weak reference to said composition.
    */
-  @SuppressWarnings("WeakerAccess") public void setAnimation(final String animationName, final CacheStrategy cacheStrategy) {
+  @SuppressWarnings("WeakerAccess") public void setAnimation(final String animationName,
+      final CacheStrategy cacheStrategy) {
     this.animationName = animationName;
     if (weakRefCache.containsKey(animationName)) {
       WeakReference<LottieComposition> compRef = weakRefCache.get(animationName);
@@ -397,7 +398,7 @@ public class LottieAnimationView extends AppCompatImageView {
    * If you use image assets, you must explicitly specify the folder in assets/ in which they are
    * located because bodymovin uses the name filenames across all compositions (img_#).
    * Do NOT rename the images themselves.
-   *
+   * <p>
    * If your images are located in src/main/assets/airbnb_loader/ then call
    * `setImageAssetsFolder("airbnb_loader/");`.
    */
@@ -463,7 +464,7 @@ public class LottieAnimationView extends AppCompatImageView {
   /**
    * Set the scale on the current composition. The only cost of this function is re-rendering the
    * current frame so you may call it frequent to scale something up or down.
-   *
+   * <p>
    * The smaller the animation is, the better the performance will be. You may find that scaling an
    * animation down then rendering it in a larger ImageView and letting ImageView scale it back up
    * with a scaleType such as centerInside will yield better performance with little perceivable
